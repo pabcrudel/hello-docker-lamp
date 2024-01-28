@@ -14,8 +14,6 @@ $title = 'Hello Docker LAMP';
 
 <body>
   <h1><?=$title?></h1>
-
-  <?php phpinfo(); ?>
 </body>
 
 </html>
