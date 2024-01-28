@@ -14,6 +14,13 @@ $title = 'Hello Docker LAMP';
 
 <body>
   <h1><?=$title?></h1>
+
+  <nav>
+    <ul>
+      <li><a href="blog.php">Blog</a></li>
+      <li><a href="info.php">Server info</a></li>
+    </ul>
+  </nav>
 </body>
 
 </html>
