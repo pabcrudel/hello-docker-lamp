@@ -5,10 +5,6 @@ services:
     image: php:7.2-apache
     restart: on-failure:5
     ports:
-      # Binds 8080 post of real machine to the 80 port of the docker
       - "8080:80"
     volumes:
-      # Links a folder from working dir to the root path of PHP-Apache.
-      # <working-dir-folder>:<target-dir>
-      # The working dir folder will be create if doesn't exists.
       - ./website:/var/www/html
