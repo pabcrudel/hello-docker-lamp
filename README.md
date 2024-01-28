@@ -1,6 +1,7 @@
 # Hello Docker LAMP
 
-Docker Compose that setups a LAMP Stack.
+Docker Compose that setups a
+[LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)).
 
 ## Docker Compose [PKB](https://en.wikipedia.org/wiki/Personal_knowledge_base)
 
