@@ -71,3 +71,9 @@ networks:
   network-name-02:
     driver: bridge
 ```
+
+## Bugs or suggestions
+
+If you found a bug or have a suggestion please don't hesitate to contact me or
+open an
+[issue on GitHub](https://github.com/pabcrudel/hello-docker-lamp/issues).
