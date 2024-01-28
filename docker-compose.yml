@@ -25,6 +25,18 @@ services:
       - database
     networks:
       - lamp_net
+  phpmyadmin:
+    image: phpmyadmin
+    restart: on-failure:5
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=database
+      - PMA_PORT=3306
+    depends_on:
+      - database
+    networks:
+      - lamp_net
 
 networks:
   lamp_net:
