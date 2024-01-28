@@ -4,61 +4,69 @@ Docker Compose that setups a LAMP Stack.
 
 ## Docker Compose [PKB](https://en.wikipedia.org/wiki/Personal_knowledge_base)
 
-- Restart: Specifies a restart policy:
-  - `no`: Default value. The container won't be restarted.
-  - `always`: The service will be restarted every time it is stopped, even if
-    you stops it.
-  - `unless-stopped`: Same as `always` but it will remain stopped if you stops
-    it.
-  - `on-failure[:times]`: The container will be restarted if it fails.
-    Optionally you can specify how many attempts until be considered a failure service.
+### Restart
 
-  ```yml
-  restart:
-    - on-failure:5
-  ```
+Specifies a restart policy:
 
-- Ports: Binds specific posts between real host and docker.
+- `no`: Default value. The container won't be restarted.
+- `always`: The service will be restarted every time it is stopped, even if you
+  stops it.
+- `unless-stopped`: Same as `always` but it will remain stopped if you stops it.
+- `on-failure[:times]`: The container will be restarted if it fails. Optionally
+  you can specify how many attempts until be considered a failure service.
 
-  ```yml
-  ports:
-    - <host-port>:<docker-port>
-  ```
+```yml
+restart:
+  - on-failure:5
+```
 
-- Volumes: Links a folder from working dir to the service target folder. The
-  working dir folder will be create if doesn't exists.
+### Ports
 
-  ```yml
-  volumes:
-    - <working-dir-folder>:<target-dir>
-  ```
+Binds specific posts between real host and docker.
 
-- Network: Allow isolated communication between containers. Each container of
-  the same network can communicate with others, however, they cant communicate
-  with containers of other networks.
+```yml
+ports:
+  - <host-port>:<docker-port>
+```
 
-  ```yml
-  services:
-    service1:
-      network:
-      - <network-name-01>
+### Volumes
 
-    service2:
-      network:
-      - <network-name-02>
+Links a folder from working dir to the service target folder. The working dir
+folder will be create if doesn't exists.
 
-    service3:
-      network:
-      - <network-name-01>
+```yml
+volumes:
+  - <working-dir-folder>:<target-dir>
+```
 
-    service4:
-      network:
-      - <network-name-02>
+### Network
 
-  networks:
-    network-name-01:
-      driver: bridge
+Allow isolated communication between containers. Each container of the same
+network can communicate with others, however, they cant communicate with
+containers of other networks.
 
-    network-name-02:
-      driver: bridge
-  ```
+```yml
+services:
+  service1:
+    network:
+    - <network-name-01>
+
+  service2:
+    network:
+    - <network-name-02>
+
+  service3:
+    network:
+    - <network-name-01>
+
+  service4:
+    network:
+    - <network-name-02>
+
+networks:
+  network-name-01:
+    driver: bridge
+
+  network-name-02:
+    driver: bridge
+```
