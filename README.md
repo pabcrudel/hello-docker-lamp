@@ -32,3 +32,33 @@ Docker Compose that setups a LAMP Stack.
   volumes:
     - <working-dir-folder>:<target-dir>
   ```
+
+- Network: Allow isolated communication between containers. Each container of
+  the same network can communicate with others, however, they cant communicate
+  with containers of other networks.
+
+  ```yml
+  services:
+    service1:
+      network:
+      - <network-name-01>
+
+    service2:
+      network:
+      - <network-name-02>
+
+    service3:
+      network:
+      - <network-name-01>
+
+    service4:
+      network:
+      - <network-name-02>
+
+  networks:
+    network-name-01:
+      driver: bridge
+
+    network-name-02:
+      driver: bridge
+  ```
