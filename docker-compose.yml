@@ -1,6 +1,19 @@
 version: '3'
 
 services:
+  database:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: on-failure:5
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - lamp_net
   webserver:
     build: .
     restart: on-failure:5
@@ -8,3 +21,9 @@ services:
       - 80:80
     volumes:
       - ./website:/var/www/html
+    networks:
+      - lamp_net
+
+networks:
+  lamp_net:
+    driver: bridge
