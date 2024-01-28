@@ -3,6 +3,7 @@ version: '3'
 services:
   webserver:
     image: php:7.2-apache
+    restart: on-failure:5
     ports:
       # Binds 8080 post of real machine to the 80 port of the docker
       - "8080:80"
