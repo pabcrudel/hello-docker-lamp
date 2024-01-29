@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+  # MySQL Database Service
   database:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -12,6 +13,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./database:/docker-entrypoint-initdb.d
+
+  # PHP + Apache Service
   webserver:
     build: .
     restart: on-failure:5
@@ -21,6 +24,8 @@ services:
       - ./website:/var/www/html
     depends_on:
       - database
+
+  # MySQL graphic admin interface
   phpmyadmin:
     image: phpmyadmin
     restart: on-failure:5
