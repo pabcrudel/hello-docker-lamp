@@ -12,8 +12,6 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./database:/docker-entrypoint-initdb.d
-    networks:
-      - lamp_net
   webserver:
     build: .
     restart: on-failure:5
@@ -23,8 +21,6 @@ services:
       - ./website:/var/www/html
     depends_on:
       - database
-    networks:
-      - lamp_net
   phpmyadmin:
     image: phpmyadmin
     restart: on-failure:5
@@ -35,9 +31,3 @@ services:
       - PMA_PORT=3306
     depends_on:
       - database
-    networks:
-      - lamp_net
-
-networks:
-  lamp_net:
-    driver: bridge
