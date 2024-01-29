@@ -13,6 +13,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - lamp_net
 
   # PHP + Apache Service
   webserver:
@@ -24,6 +26,8 @@ services:
       - ./website:/var/www/html
     depends_on:
       - database
+    networks:
+      - lamp_net
 
   # MySQL graphic admin interface
   phpmyadmin:
@@ -36,3 +40,9 @@ services:
       - PMA_PORT=3306
     depends_on:
       - database
+    networks:
+      - lamp_net
+
+networks:
+  lamp_net:
+    driver: bridge
