@@ -1,4 +1,4 @@
-# Hello Docker LAMP
+# Docker Compose LAMP
 
 Docker Compose that setups a
 [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)).
