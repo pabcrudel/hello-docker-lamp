@@ -1,6 +1,6 @@
 <?php
 $connection = mysqli_connect(
-  'database', 'pabcrudel', 'password', 'pabcrudel_database'
+  'database', 'pablocru', 'password', 'pablocru_database'
 );
 $query = 'SELECT * FROM blog';
 $result = mysqli_query($connection, $query);
